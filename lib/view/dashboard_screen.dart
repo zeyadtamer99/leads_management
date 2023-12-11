@@ -2,16 +2,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leads_management/config.dart';
+import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 import '../controllers/dashboardController.dart';
 import '../reuseableWidgets/custom_list_tile_leaderboard.dart';
 import '../reuseableWidgets/custom_progress_bar.dart';
 
 class DashboardScreen extends StatelessWidget {
+  final ValueNotifier<double> valueNotifier = ValueNotifier(60);
+  final ValueNotifier<double> valueNotifier2 = ValueNotifier(60);
+
   final DashboardController dashboardController =
       Get.put(DashboardController());
 
   @override
   Widget build(BuildContext context) {
+    valueNotifier.value = 45.0;
+    valueNotifier2.value = 75.0;
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -52,18 +59,53 @@ class DashboardScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      CustomCircularProgressBar(
-                        progress: 0.45,
-                        progressText: '45%',
-                        belowText: 'Lost Leads',
-                        progressColor: UiConfig.colorSec,
+                      Column(
+                        children: [
+                          SimpleCircularProgressBar(
+                            size: 100,
+                            valueNotifier: valueNotifier2,
+                            startAngle: 0,
+                            progressColors: const [UiConfig.colorSec],
+                            progressStrokeWidth: 15,
+                            backColor:Colors.grey,
+                            backStrokeWidth: 15,
+                            animationDuration: 3,
+                            mergeMode: true,
+                            onGetText: (double value) {
+                              return Text(
+                                '${value.toInt()}%',
+                                style: TextStyle(fontSize: 32),
+                              );
+                            },
+                          ),
+                          SizedBox(height: 16,),
+                          Text("Lost Leads",style: TextStyle(fontSize: 22,),),
+                        ],
                       ),
-                      CustomCircularProgressBar(
-                        progress: 0.7,
-                        progressText: '70%',
-                        belowText: 'Target',
-                        progressColor: Colors.greenAccent,
+                      Column(
+                        children: [
+                          SimpleCircularProgressBar(
+                            size: 100,
+                            valueNotifier: valueNotifier,
+                            startAngle: 0,
+                            progressColors: const [UiConfig.niceGreen],
+                            progressStrokeWidth: 15,
+                            backColor: Colors.grey,
+                            backStrokeWidth: 15,
+                            animationDuration: 3,
+                            mergeMode: true,
+                            onGetText: (double value) {
+                              return Text(
+                                '${value.toInt()}%',
+                                style: TextStyle(fontSize: 32),
+                              );
+                            },
+                          ),
+                          SizedBox(height: 16,),
+                          Text("Target",style: TextStyle(fontSize: 22,),),                        ],
                       ),
+
+
                     ],
                   ),
                 ],
@@ -84,11 +126,11 @@ class DashboardScreen extends StatelessWidget {
                   var leaderboardItem =
                   dashboardController.leaderboardsData[index];
                   return CustomListTileLeaderBoard(
-                    startIcon: leaderboardItem['startIcon']?? Icons.help,
-                    genderIcon: leaderboardItem['genderIcon']?? Icons.help,
+                    startIcon: leaderboardItem['startIcon'],
+                    genderIcon: leaderboardItem['genderIcon'],
                     name: leaderboardItem['name'],
                     points: leaderboardItem['score'].toString(),
-                    endIcon: leaderboardItem['endIcon']?? Icons.help, startIconColor: leaderboardItem['startIconColor'], genderIconColor: leaderboardItem['genderIconColor'], endIconColor: leaderboardItem['endIconColor'],
+                    endIcon: leaderboardItem['endIcon'], startIconColor: leaderboardItem['startIconColor'], genderIconColor: leaderboardItem['genderIconColor'], endIconColor: leaderboardItem['endIconColor'],
                   );
                 },
               ),

@@ -26,13 +26,11 @@ class CustomListTileLeaderBoard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: ListTile(
+        leading: Icon(startIcon,color: Colors.deepOrange,),
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-              Icon(startIcon,color: startIconColor,),
-            SizedBox(width: 8),
-            Icon(genderIcon,color: genderIconColor,),
-            SizedBox(width: 8),
+
             Text(name),
             SizedBox(width: 8),
             Text(points),

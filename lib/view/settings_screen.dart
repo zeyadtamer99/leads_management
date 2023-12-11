@@ -37,7 +37,7 @@ class SettingsPage extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Container(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: Colors.grey[300],
                 borderRadius: BorderRadius.circular(16),
