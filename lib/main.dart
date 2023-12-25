@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leads_management/controllers/bindings.dart';
 import 'package:leads_management/controllers/homeController.dart';
-import 'package:leads_management/view/home_screen.dart';
+import 'package:leads_management/themeService.dart';
 import 'package:leads_management/view/sign_in_screen.dart';
 
 void main() {
@@ -16,11 +16,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Lead Management App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: SignInScreen(),
       initialBinding: Binding(),
+      theme: ThemeService().lightTheme,
+      darkTheme: ThemeService().darkTheme,
+      themeMode:ThemeService().getThemeMode(),
     );
   }
 }

@@ -5,7 +5,6 @@ import 'package:leads_management/config.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 import '../controllers/dashboardController.dart';
 import '../reuseableWidgets/custom_list_tile_leaderboard.dart';
-import '../reuseableWidgets/custom_progress_bar.dart';
 
 class DashboardScreen extends StatelessWidget {
   final ValueNotifier<double> valueNotifier = ValueNotifier(60);

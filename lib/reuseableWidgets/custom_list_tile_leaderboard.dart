@@ -31,9 +31,9 @@ class CustomListTileLeaderBoard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
 
-            Text(name),
+            Text(name,style: TextStyle(fontSize: 16),),
             SizedBox(width: 8),
-            Text(points),
+            Text(points,style: TextStyle(fontSize: 16),),
           ],
         ),
         trailing: Icon(endIcon,color: endIconColor,),

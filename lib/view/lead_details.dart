@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:leads_management/config.dart';
 import 'package:leads_management/reuseableWidgets/customButton.dart';
+import 'package:leads_management/view/feedback_screen.dart';
 
 class LeadDetails extends StatelessWidget {
   Map? data;
@@ -48,7 +50,7 @@ class LeadDetails extends StatelessWidget {
             Expanded(child: SizedBox()),
             DefaultButton(
                 txt: "Feedback",
-                function: () {},
+                function: () {Get.to(FeedbackScreen());},
                 bg_color: UiConfig.colorSec,
                 txt_color: Colors.white),
             SizedBox(

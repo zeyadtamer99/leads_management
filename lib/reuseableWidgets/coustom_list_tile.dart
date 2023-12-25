@@ -8,13 +8,17 @@ class CustomListTile extends StatelessWidget {
   final IconData icon;
   final Function()? onTap;
   Color color;
-  CustomListTile({required this.title, required this.icon, this.onTap,this.color = UiConfig.colorSec});
+  CustomListTile(
+      {required this.title,
+      required this.icon,
+      this.onTap,
+      this.color = UiConfig.colorSec});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 60,
-        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      height: 60,
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       // padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: color,
@@ -29,8 +33,16 @@ class CustomListTile extends StatelessWidget {
         ],
       ),
       child: ListTile(
-        trailing: Icon(icon,color: Colors.white,size: 28,),
-        title: Text(title,style: TextStyle(fontSize: 20,fontWeight: FontWeight.w700,color: Colors.white)),
+        trailing: Icon(
+          icon,
+          color: Colors.white,
+          size: 28,
+        ),
+        title: Text(title,
+            style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+                color: Colors.white)),
         onTap: onTap,
       ),
     );
